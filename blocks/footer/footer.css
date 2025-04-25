@@ -1,12 +1,14 @@
 footer {
-  background-color: var(--light-color);
   font-size: var(--body-font-size-xs);
 }
 
-footer .footer > div {
+footer .footer > div > .section {
+  padding: 1rem 2rem;
+}
+
+footer .footer > div > .section > div  {
   margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  max-width: 1248px;
 }
 
 footer .footer p {
@@ -14,7 +16,108 @@ footer .footer p {
 }
 
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+
+}
+
+/* first section */
+footer .footer > div > .section:first-of-type {
+  background-color: #faf7f1;
+  padding: 4rem 2rem;
+}
+
+footer .footer > div > .section:first-of-type > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+footer .footer > div > .section:first-of-type ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+footer .footer > div > .section:first-of-type .left-column p .icon {
+  width: fit-content;
+  height: auto;
+}
+
+footer .footer > div > .section:first-of-type .left-column h6 {
+  margin-top: 5.5rem;
+}
+
+footer .footer > div > .section:first-of-type .left-column ul {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+footer .footer > div > .section:first-of-type .right-column ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+footer .footer > div > .section:nth-of-type(2) > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 11px;
+}
+
+footer .footer > div > .section:nth-of-type(2) > div > ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@media (width >= 900px) {
+  footer .footer > div > .section:first-of-type > div {
+    flex-direction: row;
+  }
+}
+
+@media (width < 900px) {
+  footer .footer > div > .section {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  footer .footer > div > .section:first-of-type {
+    padding: 2rem;
+  }
+
+  footer .footer > div > .section:first-of-type .left-column h6 {
+    margin-top: 3rem;
+  }
+
+  footer .footer > div > .section:first-of-type .left-column ul {
+    justify-content: center;
+  }
+
+  footer .footer > div > .section:first-of-type .right-column ul {
+    align-items: center;
+  }
+
+  footer .footer > div > .section:nth-of-type(2) > div {
+    flex-direction: column;
+  }
+
+  footer .footer > div > .section:nth-of-type(2) > div > ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px 10px;
   }
 }
