@@ -19,9 +19,12 @@
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
+  /* brand colors */
+  --primary-color: #fe5000;
+
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: inter, roboto, roboto-fallback, sans-serif;
+  --heading-font-family: inter, roboto-condensed, roboto-condensed-fallback, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -37,7 +40,7 @@
   --heading-font-size-xs: 22px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 50px;
 }
 
 /* fallback fonts */
@@ -169,24 +172,17 @@ a:hover {
 a.button:any-link,
 button {
   box-sizing: border-box;
-  display: inline-block;
-  max-width: 100%;
-  margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font-family: var(--body-font-family);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.25;
-  text-align: center;
-  text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
-  cursor: pointer;
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--vds-color-primary-neutral-black, #000) 15%, transparent);
+  font: normal 700 14px / 16px Inter, sans-serif;
+  letter-spacing: normal;
+  position: relative;
+  display: inline-flex;
+  padding: 12px 14px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  align-items: center;
+  border-radius: 8px;
+  transition: .2s;
+  cursor: pointer;
 }
 
 a.button:hover,
@@ -195,12 +191,25 @@ button:hover,
 button:focus {
   background-color: var(--link-hover-color);
   cursor: pointer;
+  text-decoration: none;
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
   cursor: unset;
+}
+
+a.button.primary,
+button.primary {
+  background: linear-gradient(180deg, #fe5000 0%, #cc4000 100%);
+  color: #fff;
+}
+
+a.button.primary:hover,
+button.primary:hover {
+  background: white;
+  color: var(--primary-color);
 }
 
 a.button.secondary,
