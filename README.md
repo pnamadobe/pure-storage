@@ -1,4 +1,4 @@
-# Pure Storage (Universal Editor)
+# Pure Storage
 - Replicated https://www.purestorage.com/artificial-intelligence.html in AEM Universal Editor (Edge Delivery Services).
 
 ## Environments
