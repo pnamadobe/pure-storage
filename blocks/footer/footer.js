@@ -16,8 +16,7 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  console.log("footer: ", footer);
-
+  /* custom */
   const lastSection = footer.querySelector('.section:first-of-type .default-content-wrapper');
   const lastTwoElementsOfFirstSection = lastSection.querySelectorAll(':scope > *:nth-last-child(-n+2)');
   
