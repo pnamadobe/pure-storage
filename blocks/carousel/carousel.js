@@ -20,10 +20,11 @@ function updateActiveSlide(slide) {
 
   const indicators = block.querySelectorAll('.carousel-slide-indicator');
   indicators.forEach((indicator, idx) => {
+    const button = indicator.querySelector('button');
     if (idx !== slideIndex) {
-      indicator.querySelector('button').removeAttribute('disabled');
+      button.removeAttribute('disabled');
     } else {
-      indicator.querySelector('button').setAttribute('disabled', 'true');
+      button.setAttribute('disabled', 'true');
     }
   });
 }
@@ -65,20 +66,44 @@ function bindEvents(block) {
       if (entry.isIntersecting) updateActiveSlide(entry.target);
     });
   }, { threshold: 0.5 });
+
   block.querySelectorAll('.carousel-slide').forEach((slide) => {
     slideObserver.observe(slide);
+  });
+}
+
+function autoplayCarousel(block, interval = 5000) {
+  let autoplayInterval = setInterval(() => {
+    const currentIndex = parseInt(block.dataset.activeSlide, 10) || 0;
+    const nextIndex = currentIndex + 1;
+    showSlide(block, nextIndex);
+  }, interval);
+
+  // Pause on mouse enter, resume on leave
+  block.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+  block.addEventListener('mouseleave', () => {
+    autoplayInterval = setInterval(() => {
+      const currentIndex = parseInt(block.dataset.activeSlide, 10) || 0;
+      const nextIndex = currentIndex + 1;
+      showSlide(block, nextIndex);
+    }, interval);
   });
 }
 
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   moveInstrumentation(row, slide);
+  
   slide.dataset.slideIndex = slideIndex;
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
 
+  const divClasses = ['logo', 'quote', 'headshot-image', 'additional-info'];
+
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-    column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    if (divClasses[colIdx]) {
+      column.classList.add(divClasses[colIdx]);
+    }
     slide.append(column);
   });
 
@@ -119,8 +144,8 @@ export default async function decorate(block) {
     const slideNavButtons = document.createElement('div');
     slideNavButtons.classList.add('carousel-navigation-buttons');
     slideNavButtons.innerHTML = `
-      <button type="button" class= "slide-prev" aria-label="${'Previous Slide'}"></button>
-      <button type="button" class="slide-next" aria-label="${'Next Slide'}"></button>
+      <button type="button" class="slide-prev" aria-label="Previous Slide"></button>
+      <button type="button" class="slide-next" aria-label="Next Slide"></button>
     `;
 
     container.append(slideNavButtons);
@@ -134,9 +159,10 @@ export default async function decorate(block) {
       const indicator = document.createElement('li');
       indicator.classList.add('carousel-slide-indicator');
       indicator.dataset.targetSlide = idx;
-      indicator.innerHTML = `<button type="button" aria-label="${'Show Slide'} ${idx + 1} ${'of'} ${rows.length}"></button>`;
+      indicator.innerHTML = `<button type="button" aria-label="Show Slide ${idx + 1} of ${rows.length}"></button>`;
       slideIndicators.append(indicator);
     }
+
     row.remove();
   });
 
@@ -145,5 +171,6 @@ export default async function decorate(block) {
 
   if (!isSingleSlide) {
     bindEvents(block);
+    autoplayCarousel(block, 5000); // 5 seconds
   }
 }

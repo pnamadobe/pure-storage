@@ -147,9 +147,9 @@ pre {
   white-space: pre;
 }
 
-main > div {
+/* main > div {
   margin: 40px 16px;
-}
+} */
 
 input,
 textarea,
@@ -191,9 +191,10 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--primary-color);
   cursor: pointer;
   text-decoration: none;
+  color: #fff;
 }
 
 button:disabled,
@@ -240,7 +241,7 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  padding: 40px 0;
 }
 
 main > .section > div {
