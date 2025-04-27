@@ -202,7 +202,7 @@
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "additional information",
         "value": "",
         "label": "Additional Information",
         "valueType": "string"
