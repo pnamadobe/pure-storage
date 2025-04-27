@@ -204,7 +204,7 @@
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Quote Text",
+        "label": "Additional Information",
         "valueType": "string"
       }
     ]
