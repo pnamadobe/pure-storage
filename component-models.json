@@ -140,6 +140,18 @@
           {
             "name": "Center Text",
             "value": "text-center"
+          },
+          {
+            "name": "Small Padding",
+            "value": "sm-padding"
+          },
+          {
+            "name": "Medium Padding",
+            "value": "md-padding"
+          },
+          {
+            "name": "Large Padding",
+            "value": "lg-padding"
           }
         ]
       }

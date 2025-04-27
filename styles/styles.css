@@ -270,3 +270,15 @@ main .section.highlight {
 main .section.text-center {
   text-align: center;
 }
+
+main .section.sm-padding {
+  padding: 1rem;
+}
+
+main .section.md-padding {
+  padding: 2.5rem 1rem;
+}
+
+main .section.lg-padding {
+  padding: 5rem 1rem;
+}
