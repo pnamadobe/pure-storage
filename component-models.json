@@ -136,6 +136,10 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Center Text",
+            "value": "text-center"
           }
         ]
       }
