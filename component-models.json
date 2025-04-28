@@ -263,5 +263,31 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "form",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Background Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Additional Information",
+        "valueType": "string"
+      }
+    ]
   }
 ]
