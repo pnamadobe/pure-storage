@@ -152,6 +152,10 @@
           {
             "name": "Large Padding",
             "value": "lg-padding"
+          },
+          {
+            "name": "Full Width",
+            "value": "full-width"
           }
         ]
       }
