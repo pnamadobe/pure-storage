@@ -28,7 +28,7 @@ export default function decorate(block) {
       div.prepend(titleDiv);
     }
 
-    moveInstrumentation(div, titleDiv);
+    // moveInstrumentation(div, titleDiv);
   });
 
   const form = `
@@ -90,6 +90,6 @@ export default function decorate(block) {
   formEl.innerHTML = `${form}`;
 
   informationEl.prepend(formEl);
-  
-  moveInstrumentation(informationEl, formEl);
+
+  moveInstrumentation(informationEl);
 }
