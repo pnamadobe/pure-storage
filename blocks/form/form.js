@@ -26,9 +26,10 @@ export default function decorate(block) {
 
       titleDiv.append(title);
       div.prepend(titleDiv);
-    }
 
-    // moveInstrumentation(div, titleDiv);
+      // Move instrumentation from infoDiv to titleDiv (optional logic based on your use case)
+      if (infoDiv) moveInstrumentation(infoDiv, titleDiv);
+    }
   });
 
   const form = `
@@ -88,8 +89,9 @@ export default function decorate(block) {
   const formEl = document.createElement('div');
   formEl.classList.add('form-wrapper');
   formEl.innerHTML = `${form}`;
+  
+  // Move instrumentation from original info div to the new form wrapper
+  if (informationEl) moveInstrumentation(informationEl, formEl);
 
   informationEl.prepend(formEl);
-
-  moveInstrumentation(informationEl);
 }
