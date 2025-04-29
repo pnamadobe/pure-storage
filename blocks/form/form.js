@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 export default function decorate(block) {
   block.id = 'ai-campaign-form';
   const childDivs = block.querySelectorAll(':scope > div');
@@ -24,9 +26,11 @@ export default function decorate(block) {
 
       titleDiv.append(title);
       div.prepend(titleDiv);
+
+      // Move instrumentation from infoDiv to titleDiv (optional logic based on your use case)
+      if (infoDiv) moveInstrumentation(infoDiv, titleDiv);
     }
   });
-
 
   const form = `
     <form>
@@ -57,7 +61,6 @@ export default function decorate(block) {
       <!-- 7. Country -->
       <label for="country">Country:</label>
       <select id="country" name="country">
-        <option value="canada">Canada</option>
         <option value="usa">United States</option>
       </select><br>
 
@@ -81,9 +84,14 @@ export default function decorate(block) {
       <button type="submit" class="button primary">Submit</button>
     </form>
   `;
+
   const informationEl = block.querySelector('.information');
   const formEl = document.createElement('div');
   formEl.classList.add('form-wrapper');
   formEl.innerHTML = `${form}`;
+  
+  // Move instrumentation from original info div to the new form wrapper
+  if (informationEl) moveInstrumentation(informationEl, formEl);
+
   informationEl.prepend(formEl);
 }
