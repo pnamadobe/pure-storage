@@ -290,4 +290,5 @@ main .section.full-width {
 
 main .section.full-width > div {
   max-width: 100%;
+  padding: 0;
 }
