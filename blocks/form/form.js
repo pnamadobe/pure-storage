@@ -5,10 +5,11 @@ export default function decorate(block) {
   const childDivs = block.querySelectorAll(':scope > div');
 
   childDivs.forEach(div => {
-    const img = div.querySelector('source');
+    const source = div.querySelector('source');
+    const img = div.querySelector('img');
 
-    if (img) {
-      const imageUrl = img.srcset;
+    if (source || img) {
+      const imageUrl = source ? source.srcset : img.src;
       div.classList.add('background-image');
       div.style.backgroundImage = `url(${imageUrl})`;
       div.innerHTML = ''; // Clear image content so it doesn't render
