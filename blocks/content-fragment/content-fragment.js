@@ -1,15 +1,17 @@
-import { getMetadata } from '../../scripts/aem.js';
+// import { getMetadata } from '../../scripts/aem.js';
 import { isAuthorEnvironment, moveInstrumentation } from '../../scripts/scripts.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 
 /**
  *
  * @param {Element} block
  */
 export default async function decorate(block) {
+  // Note: Hard-coded
   const aemauthorurl = 'https://author-p142507-e1463170.adobeaemcloud.com';
   const aempublishurl = 'https://publish-p142507-e1463170.adobeaemcloud.com';
-
   const persistedquery = '/graphql/execute.json/pure-storage/cardByPath';
+
   const contentPath = block.querySelector(':scope div:nth-child(1) > div a')?.textContent?.trim();
 
   const variationname =
@@ -39,25 +41,23 @@ export default async function decorate(block) {
       return data;
     });
   const itemId = `urn:aemconnection:${contentPath}/jcr:content/data/${variationname}`;
+  const optimizedPic = createOptimizedPicture(cfReq?.image['_publishUrl'], cfReq?.heading, false, [{ width: '1000' }]);
+
   block.setAttribute('data-aue-type', 'container');
   block.innerHTML = `
-  <div class='banner-content block' data-aue-resource=${itemId} data-aue-label="card content fragment" data-aue-type="reference" data-aue-filter="cf">
-		<div class='banner-detail' style="background-image: linear-gradient(90deg,rgba(0,0,0,0.6), rgba(0,0,0,0.1) 80%) ,url(${
-      aemauthorurl + cfReq.heroImage?._path
-    });">
-          <p data-aue-prop="headline" data-aue-label="headline" data-aue-type="text" class='pretitle'>${
-            cfReq?.headline
-          }</p>
-          <p data-aue-prop="pretitle" data-aue-label="pretitle" data-aue-type="text" class='headline'>${
-            cfReq?.pretitle
-          }</p>
-          <p data-aue-prop="detail" data-aue-label="detail" data-aue-type="richtext" class='detail'>${
-            cfReq?.detail?.plaintext
-          }</p>
-
-      </div>
-      <div class='banner-logo'>
-      </div>
+  <div class='block' data-aue-resource=${itemId} data-aue-label='card content fragment' data-aue-type='reference' data-aue-filter='cf'>
+		<div class='card-body-content'>
+        <p data-aue-prop='heading' data-aue-label='heading' data-aue-type='text' class='heading'>${
+          cfReq?.heading
+        }</p>
+        <p data-aue-prop='description' data-aue-label='description' data-aue-type='richtext' class='description'>${
+          cfReq?.description?.plaintext
+        }</p>
+        <p data-aue-prop='cta' data-aue-label='cta' data-aue-type='text' class='cta-link'>
+          <a class='button primary' href='${cfReq?.ctaUrl}'>${cfReq?.ctaLabel}</a>
+        </p>
+    </div>
+    <div class='card-body-image'>${optimizedPic.outerHTML}</div>
   </div>
 	`;
   if (!isAuthor) {
