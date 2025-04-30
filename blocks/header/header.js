@@ -127,6 +127,10 @@ export default async function decorate(block) {
 
   const navBrand = nav.querySelector('.nav-brand');
   const brandLink = navBrand.querySelector('.button');
+  const navBrandLogoTitle = navBrand.querySelector('img').getAttribute('data-icon-name');
+  const title = navBrand.querySelector('a');
+  title.title = navBrandLogoTitle;
+
   if (brandLink) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
