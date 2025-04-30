@@ -156,6 +156,10 @@
           {
             "name": "Full Width",
             "value": "full-width"
+          },
+          {
+            "name": "Grid Row",
+            "value": "grid-row"
           }
         ]
       }
