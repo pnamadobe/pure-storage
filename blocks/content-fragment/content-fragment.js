@@ -10,6 +10,7 @@ export default async function decorate(block) {
   const aempublishurl = getMetadata('publishurl') || '';
   const persistedquery = '/graphql/execute.json/pure-storage/cardByPath';
   const contentPath = block.querySelector(':scope div:nth-child(1) > div a')?.textContent?.trim();
+
   const variationname =
     block
       .querySelector(':scope div:nth-child(2) > div')
@@ -30,16 +31,16 @@ export default async function decorate(block) {
   const cfReq = await fetch(url, options)
     .then((response) => response.json())
     .then((contentfragment) => {
-      let offer = '';
+      let data = '';
       if (contentfragment.data) {
-        offer = contentfragment.data[Object.keys(contentfragment.data)[0]].item;
+        data = contentfragment.data[Object.keys(contentfragment.data)[0]].item;
       }
-      return offer;
+      return data;
     });
   const itemId = `urn:aemconnection:${contentPath}/jcr:content/data/${variationname}`;
   block.setAttribute('data-aue-type', 'container');
   block.innerHTML = `
-  <div class='banner-content block' data-aue-resource=${itemId} data-aue-label="offer content fragment" data-aue-type="reference" data-aue-filter="cf">
+  <div class='banner-content block' data-aue-resource=${itemId} data-aue-label="card content fragment" data-aue-type="reference" data-aue-filter="cf">
 		<div class='banner-detail' style="background-image: linear-gradient(90deg,rgba(0,0,0,0.6), rgba(0,0,0,0.1) 80%) ,url(${
       aemauthorurl + cfReq.heroImage?._path
     });">
