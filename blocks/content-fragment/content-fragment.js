@@ -56,7 +56,7 @@ export default async function decorate(block) {
         </p>
     </div>
     <div class='card-body-image'>
-        <img src='${aemauthorurl + cfReq?.image?._path}' title='${cfReq?.heading}'/>
+        <img src='${cfReq?.image?._publishUrl}' title='${cfReq?.heading}'/>
     </div>
   </div>
 	`;
