@@ -1,5 +1,6 @@
 // import { getMetadata } from '../../scripts/aem.js';
 import { isAuthorEnvironment, moveInstrumentation } from '../../scripts/scripts.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 
 /**
  *
@@ -40,6 +41,7 @@ export default async function decorate(block) {
       return data;
     });
   const itemId = `urn:aemconnection:${contentPath}/jcr:content/data/${variationname}`;
+  const optimizedPic = createOptimizedPicture(cfReq?.image['_path'], cfReq?.heading, false, [{ width: '1000' }]);
 
   block.setAttribute('data-aue-type', 'container');
   block.innerHTML = `
@@ -55,9 +57,7 @@ export default async function decorate(block) {
           <a class='button primary' href='${cfReq?.ctaUrl}'>${cfReq?.ctaLabel}</a>
         </p>
     </div>
-    <div class='card-body-image'>
-      <img src='${cfReq?.image?._path}' title='${cfReq?.heading}'/>
-    </div>
+    <div class='card-body-image'><${optimizedPic.outerHTML}></div>
   </div>
 	`;
   if (!isAuthor) {
