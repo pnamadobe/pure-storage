@@ -45,9 +45,9 @@ export default async function decorate(block) {
   block.innerHTML = `
   <div class='block' data-aue-resource=${itemId} data-aue-label='card content fragment' data-aue-type='reference' data-aue-filter='cf'>
 		<div class='card-body-content'>
-        <p data-aue-prop='heading' data-aue-label='heading' data-aue-type='text' class='heading'>${
+        <h4 data-aue-prop='heading' data-aue-label='heading' data-aue-type='text' class='heading'>${
           cfReq?.heading
-        }</p>
+        }</h4>
         <p data-aue-prop='description' data-aue-label='description' data-aue-type='richtext' class='description'>${
           cfReq?.description?.plaintext
         }</p>
