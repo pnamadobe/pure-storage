@@ -8,7 +8,7 @@ import { isAuthorEnvironment, moveInstrumentation } from '../../scripts/scripts.
 export default async function decorate(block) {
   const aemauthorurl = getMetadata('authorurl') || '';
   const aempublishurl = getMetadata('publishurl') || '';
-  const persistedquery = '/graphql/execute.json/pure-storage/offerByPath';
+  const persistedquery = '/graphql/execute.json/pure-storage/cardByPath';
   const contentPath = block.querySelector(':scope div:nth-child(1) > div a')?.textContent?.trim();
   const variationname =
     block
