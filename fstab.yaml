@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p142507-e1463170.adobeaemcloud.com/bin/franklin.delivery/adobedevxsc/pure-storage/main"
+    url: "https://author-p59602-e475952.adobeaemcloud.com/bin/franklin.delivery/pnamadobe/pure-storage/main"
     type: "markup"
     suffix: ".html"
