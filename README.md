@@ -2,8 +2,8 @@
 - Replicated https://www.purestorage.com/artificial-intelligence.html in AEM Universal Editor (Edge Delivery Services).
 
 ## Environments
-- Preview: https://main--pure-storage--adobedevxsc.aem.page/
-- Live: https://main--pure-storage--adobedevxsc.aem.live/
+- Preview: https://main--pure-storage--pnamadobe.aem.page/
+- Live: https://main--pure-storage--pnamadobe.aem.live/
 
 ## Documentation
 
