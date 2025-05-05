@@ -7,8 +7,8 @@ import { isAuthorEnvironment, moveInstrumentation } from '../../scripts/scripts.
  */
 export default async function decorate(block) {
   // Note: Hard-coded
-  const aemauthorurl = 'https://author-p142507-e1463170.adobeaemcloud.com';
-  const aempublishurl = 'https://publish-p142507-e1463170.adobeaemcloud.com';
+  const aemauthorurl = 'https://author-p59602-e475952.adobeaemcloud.com';
+  const aempublishurl = 'https://publish-p59602-e475952.adobeaemcloud.com/';
   const persistedquery = '/graphql/execute.json/pure-storage/cardByPath';
 
   const contentPath = block.querySelector(':scope div:nth-child(1) > div a')?.textContent?.trim();
